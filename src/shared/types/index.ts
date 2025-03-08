@@ -1,4 +1,6 @@
-export { City } from './city.js';
-export { Comment } from './comment.js';
-export { Offer } from './offer.js';
-export { User } from './user.js';
+export { City } from './city.interface.js';
+export { Comment } from './comment.interface.js';
+export { Offer } from './offer.interface.js';
+export { User } from './user.interface.js';
+export { MockServerData } from './mock-server-data.type.js';
+
