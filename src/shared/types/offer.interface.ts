@@ -1,5 +1,5 @@
-import { CityName } from './city.js';
-import { User } from './user.js';
+import { CityName } from './city.interface.js';
+import { User } from './user.interface.js';
 /**
  * Перечисление типов жилья
  */

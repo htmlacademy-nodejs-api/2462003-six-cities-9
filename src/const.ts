@@ -1,4 +1,4 @@
-import { City } from './shared/types/city.js';
+import { City } from './shared/types/city.interface.js';
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'] as const;
 
