@@ -45,6 +45,7 @@
     "got": "14.4.6",
     "inversify": "7.1.0",
     "json-server": "1.0.0-beta.3",
+    "mongoose": "8.3.4",
     "pino": "9.6.0",
     "reflect-metadata": "0.2.2"
   }
