@@ -19,7 +19,7 @@ export interface User {
      * @minLength 6
      * @maxLength 12
      */
-  password: string;
+  // password: string;
   /**
    * Тип пользователя.
    */
