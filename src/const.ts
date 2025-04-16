@@ -10,3 +10,10 @@ export const CITY_DATA: City[] = [
   { name: 'Hamburg', location: { latitude: 53.550341, longitude: 10.000654 } },
   { name: 'Dusseldorf', location: { latitude: 51.225402, longitude: 6.776314 } },
 ];
+
+export enum HousingType {
+  'apartment',
+  'room',
+  'house',
+  'hotel'
+}

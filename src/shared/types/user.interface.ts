@@ -15,12 +15,6 @@ export interface User {
      */
   avatar?: string;
   /**
-     * Пароль пользователя.
-     * @minLength 6
-     * @maxLength 12
-     */
-  // password: string;
-  /**
    * Тип пользователя.
    */
   userType: string;
