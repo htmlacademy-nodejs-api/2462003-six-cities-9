@@ -32,7 +32,6 @@ export class TSVOfferGenerator implements OfferGenerator {
     const name = getRandomItem<string>(this.mockData.names);
     const email = getRandomItem<string>(this.mockData.emails);
     const avatar = getRandomItem<string>(this.mockData.avatars);
-    const password = getRandomItem<string>(this.mockData.passwords);
     const userType = getRandomItem<string>(this.mockData.userType);
     const commentsCount = getRandomItem<string>(this.mockData.commentsCount);
     const coordinates = getRandomArrayItem<string[]>(this.mockData.coordinates);
@@ -43,7 +42,7 @@ export class TSVOfferGenerator implements OfferGenerator {
     return [
       title, description, date, city, previewImage, images,
       isPremium, isFavorite, rating, type, rooms, guests,
-      price, amenities, name, email, avatar, password, userType,
+      price, amenities, name, email, avatar, userType,
       commentsCount, coordinates
     ].join('\t');
   }

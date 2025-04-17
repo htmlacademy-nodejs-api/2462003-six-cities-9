@@ -4,7 +4,7 @@ import { inject, injectable } from 'inversify';
 import { Component } from '../shared/types/index.js';
 import { DatabaseClient } from '../shared/libs/database-client/index.js';
 import { getMongoURI } from '../shared/helpers/index.js';
-import { userModel } from '../shared/modules/user/index.js';
+// import { userModel } from '../shared/modules/user/index.js';
 
 @injectable()
 export class RestApplication {
@@ -33,6 +33,14 @@ export class RestApplication {
     this.logger.info('Init database...');
     await this.initDb();
     this.logger.info('Init database completed');
+
+    // const user = await userModel.create({
+    //   email: 'test@email.local',
+    //   name: 'keks.jpg',
+    //   avatar: 'Keks',
+    //   password: 'das',
+    //   userType: 'ddada',
+    // });
 
   }
 }

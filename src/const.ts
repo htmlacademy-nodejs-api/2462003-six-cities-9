@@ -12,8 +12,8 @@ export const CITY_DATA: City[] = [
 ];
 
 export enum HousingType {
-  'apartment',
-  'room',
-  'house',
-  'hotel'
+  Apartment = 'apartment',
+  Room = 'room',
+  House = 'house',
+  Hotel = 'hotel'
 }

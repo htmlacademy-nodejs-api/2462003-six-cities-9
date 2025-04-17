@@ -80,16 +80,16 @@ export class TSVFileReader extends EventEmitter implements FileReader {
     switch (type.trim().toLowerCase()) {
       case 'apartments':
       case 'apartment':
-        return HousingType.apartment;
+        return HousingType.Apartment;
       case 'houses':
       case 'house':
-        return HousingType.house;
+        return HousingType.House;
       case 'rooms':
       case 'room':
-        return HousingType.room;
+        return HousingType.Room;
       case 'hotels':
       case 'hotel':
-        return HousingType.hotel;
+        return HousingType.Hotel;
       default:
         throw new Error(`Unknown housing type: ${type}`);
     }
