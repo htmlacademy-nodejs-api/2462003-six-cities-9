@@ -2,8 +2,10 @@ import EventEmitter from 'node:events';
 import { createReadStream } from 'node:fs';
 
 import { FileReader } from './file-reader.interface.js';
-import { Coordinates, HousingType, Offer } from '../../types/offer.interface.js';
+import { Offer } from '../../types/offer.interface.js';
+import { Location } from '../../types/city.interface.js';
 import { User } from '../../types/user.interface.js';
+import { HousingType } from '../../../const.js';
 
 export class TSVFileReader extends EventEmitter implements FileReader {
   private CHUNK_SIZE = 16384; // 16KB
@@ -33,7 +35,6 @@ export class TSVFileReader extends EventEmitter implements FileReader {
       name,
       email,
       avatar,
-      password,
       userType,
       commentsCount,
       coordinates,
@@ -57,7 +58,6 @@ export class TSVFileReader extends EventEmitter implements FileReader {
       author: this.parseAuthor(name,
         email,
         avatar,
-        password,
         userType,),
       commentsCount: parseInt(commentsCount, 10),
       coordinates: this.parseCoordinates(coordinates)
@@ -80,16 +80,16 @@ export class TSVFileReader extends EventEmitter implements FileReader {
     switch (type.trim().toLowerCase()) {
       case 'apartments':
       case 'apartment':
-        return 'apartment';
+        return HousingType.Apartment;
       case 'houses':
       case 'house':
-        return 'house';
+        return HousingType.House;
       case 'rooms':
       case 'room':
-        return 'room';
+        return HousingType.Room;
       case 'hotels':
       case 'hotel':
-        return 'hotel';
+        return HousingType.Hotel;
       default:
         throw new Error(`Unknown housing type: ${type}`);
     }
@@ -99,11 +99,11 @@ export class TSVFileReader extends EventEmitter implements FileReader {
     return amenities.split(';');
   }
 
-  private parseAuthor(name: string, email: string, avatar: string, password: string, userType: string): User {
-    return {name, email, avatar, password, userType};
+  private parseAuthor(name: string, email: string, avatar: string, userType: string): User {
+    return {name, email, avatar, userType};
   }
 
-  private parseCoordinates(coordinates: string): Coordinates {
+  private parseCoordinates(coordinates: string): Location {
     const [lat, long] = coordinates.split(';');
     const latitude = parseFloat(lat);
     const longitude = parseFloat(long);
@@ -130,14 +130,11 @@ export class TSVFileReader extends EventEmitter implements FileReader {
         importedRowCount++;
 
         const parsedOffer = this.parseLineToOffer(completeRow);
-        this.emit('line', parsedOffer);
+        await new Promise((resolve) => {
+          this.emit('line', parsedOffer, resolve);
+        });
       }
     }
     this.emit('end', importedRowCount);
   }
-
-  // public toArray(): Offer[] {
-  //   this.validateRawData();
-  //   return this.parseRawDataToOffers();
-  // }
 }

@@ -1,29 +1,6 @@
-import { CityName } from './city.interface.js';
+import { CityName, Location } from './city.interface.js';
 import { User } from './user.interface.js';
-/**
- * Перечисление типов жилья
- */
-export type HousingType = 'apartment' | 'room' | 'house' | 'hotel';
-
-/**
- * Перечисление типов удобств
- */
-export type Amenities = string []
-
-/**
- * Интерфейс для географических координат.
- */
-export interface Coordinates {
-  /**
-   * Широта.
-   */
-  latitude: number;
-
-  /**
-   * Долгота.
-   */
-  longitude: number;
-}
+import { HousingType } from '../../const.js';
 
 /**
  * Интерфейс, описывающий предложение по аренде.
@@ -110,7 +87,7 @@ export interface Offer {
   /**
    * Список удобств. Не менее одного элемента.
    */
-  amenities: Amenities;
+  amenities: string[];
 
   /**
    * Автор предложения. Ссылка на сущность "Пользователь".
@@ -125,6 +102,6 @@ export interface Offer {
   /**
    * Географические координаты предложения.
    */
-  coordinates: Coordinates;
+  coordinates: Location;
 }
 
